@@ -164,9 +164,9 @@ namespace MSCodeTools
               sb.Append("      public class 【表】                               \r\n ");
               sb.Append("      {                                                \r\n");
               sb.Append("                                                       \r\n");
-              sb.Append("          public 【表】()                              \r\n");
-              sb.Append("          {                                           \r\n ");
-              sb.Append("          }                                           \r\n ");
+              sb.Append("            public 【表】()                              \r\n");
+              sb.Append("            {                                           \r\n ");
+              sb.Append("            }                                           \r\n ");
               sb.Append("         【属性部分】                                  \r\n ");
               sb.Append("     }                                                \r\n ");
               sb.Append("  }                                                   \r\n ");
@@ -186,13 +186,8 @@ namespace MSCodeTools
                   string _f = first.ToLower() + fName;
                   string pF = first.ToUpper() + fName;
                   propPart.Append("                                                  \r\n");
-                  propPart.AppendFormat("    private {0} {1};                          \r\n", type, _f);
-                  propPart.AppendFormat("    //{0}                                       \r\n", fRemark);
-                  propPart.AppendFormat("    public {0} {1}                              \r\n", type, pF);
-                  propPart.Append("          {                                            \r\n");
-                  propPart.Append("              get { return " + _f + "; }                     \r\n");
-                  propPart.Append("              set { " + _f + " = value; }                    \r\n");
-                  propPart.Append("          }                                            \r\n");
+                  propPart.AppendFormat("            public {0} {1}", type, pF);
+                  propPart.Append("{get;set;}   \r\n");
               }
               #endregion
 
@@ -282,16 +277,16 @@ namespace MSCodeTools
                   }
                   if (twoT == oneT)
                   {
-                      propPart.AppendFormat("[{0}] ", _f);
-                      sb1.AppendFormat("[{0}]=@{0}", _f);
-                      sb2.AppendFormat("[{0}])", _f);
+                      propPart.AppendFormat("{0} ", _f);
+                      sb1.AppendFormat("{0}=@{0}", _f);
+                      sb2.AppendFormat("{0})", _f);
                       sb3.AppendFormat("@{0})", _f);
                   }
                   else
                   {
-                      propPart.AppendFormat("[{0}],", _f);
-                      sb1.AppendFormat("[{0}]=@{0},", _f);
-                      sb2.AppendFormat("[{0}],", _f);
+                      propPart.AppendFormat("{0},", _f);
+                      sb1.AppendFormat("{0}=@{0},", _f);
+                      sb2.AppendFormat("{0},", _f);
                       sb3.AppendFormat("@{0},", _f);
                   }
               }
@@ -358,7 +353,7 @@ namespace MSCodeTools
                   reval = "string";
                   break;
               case "bigint":
-                  reval = "int";
+                  reval = "long";
                   break;
               case "binary":
                   reval = "byte[]";
