@@ -18,6 +18,11 @@ namespace MSCodeTools
         public login()
         {
             InitializeComponent();
+            string SQL_CONN_STR = System.Configuration.ConfigurationManager.AppSettings["ConnStr"];
+            if (!string.IsNullOrWhiteSpace(SQL_CONN_STR) &&SQL_CONN_STR != "XXX")
+            {
+                t_conn.Text = SQL_CONN_STR;
+            }
         }
         private void btn_conn_Click(object sender, EventArgs e)
         {
